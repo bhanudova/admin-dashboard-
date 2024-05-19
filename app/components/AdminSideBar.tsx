@@ -2,20 +2,60 @@
 import { ArrowRight, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 import React from 'react';
-import { FaCaretRight, FaCaretUp } from "react-icons/fa6";
 import { RiPieChartLine } from "react-icons/ri";
+import MenuItem from './MenuItem';
+import { FaCaretRight, FaCaretUp } from 'react-icons/fa6';
 
-type Section = 'home' | 'profile' | null;
+type Section = 'home' | 'profile' | 'ecommerce' | null;
+
+interface MenuItemData {
+    section: Section;
+    icon: React.JSX.Element;
+    label: string;
+    items: (string | MenuItemData)[];
+}
+
+const menuData: MenuItemData[] = [
+    {
+        section: 'home',
+        icon: <RiPieChartLine className='w-4 h-4 text-black/80' />,
+        label: 'Home',
+        items: ['Dashboard', 'Profile', 'Settings', 'CRM', 'ProjectManagement','Chat','Email']
+    },
+    {
+        section: 'profile',
+        icon: <ShoppingCart className='w-4 h-4' />,
+        label: 'E Commerce',
+        items: [
+            {
+                section: 'ecommerce',
+                icon: <FaCaretRight className='w-4 h-4' />,
+                label: 'Overview',
+                items: ['Subitem 1', 'Subitem 2']
+            },
+            {
+                section: 'ecommerce',
+                icon: <FaCaretRight className='w-4 h-4' />,
+                label: 'Settings',
+                items: ['Setting 1', 'Setting 2']
+            },
+            {
+                section: 'ecommerce',
+                icon: <FaCaretRight className='w-4 h-4' />,
+                label: 'Logout',
+                items: ['Logout 1', 'Logout 2']
+            }
+        ]
+    }
+];
 
 const AdminSideBar: React.FC = () => {
     const [openSection, setOpenSection] = useState<Section>(null);
+    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
-    const toggleHomeMenu = () => {
-        setOpenSection(openSection === 'home' ? null : 'home');
-    };
-
-    const toggleProfileMenu = () => {
-        setOpenSection(openSection === 'profile' ? null : 'profile');
+    const toggleMenu = (section: Section) => {
+        setOpenSection(openSection === section ? null : section);
+        setOpenSubMenu(null);  // Close any open sub-sections when toggling a main section
     };
 
     return (
@@ -23,45 +63,27 @@ const AdminSideBar: React.FC = () => {
             <div className='px-4 py-4'>
                 <nav className='text-[13px]'>
                     <ul>
-                        <li>
-                            <button
-                                className="w-full font-medium flex items-center text-left gap-2 px-4 py-2 hover:bg-gray-200 rounded-md transition duration-300"
-                                onClick={toggleHomeMenu}
-                            >
-                                <div className='flex items-center gap-[0.5px]'>
-                                    <span className={`transition-transform duration-300 ${openSection === 'home' ? 'rotate-180' : 'rotate-0'}`}>
-                                        {openSection === 'home' ? <FaCaretUp className='text-gray-500' /> : <FaCaretRight className='text-gray-500' />}
-                                    </span>
-                                    <RiPieChartLine className='w-4 h-4 text-black/80' />
-                                </div>
-                                <span>Home</span>
-                            </button>
-                            <ul className={`overflow-hidden transition-all duration-300 ${openSection === 'home' ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Dashboard</li>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Profile</li>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Settings</li>
-                            </ul>
-                        </li>
-                        <li className='px-6 mt-4'>Apps</li>
-                        <li>
-                            <button
-                                className="w-full font-medium flex items-center text-left gap-2 px-4 py-2 hover:bg-gray-200 rounded-md transition duration-300"
-                                onClick={toggleProfileMenu}
-                            >
-                                <div className='flex items-center gap-[0.5px]'>
-                                    <span className={`transition-transform duration-300 ${openSection === 'profile' ? 'rotate-180' : 'rotate-0'}`}>
-                                        {openSection === 'profile' ? <FaCaretUp /> : <FaCaretRight />}
-                                    </span>
-                                    <ShoppingCart className='w-4 h-4' />
-                                </div>
-                                <span>E Commerce</span>
-                            </button>
-                            <ul className={`overflow-hidden transition-all duration-300 ${openSection === 'profile' ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Overview</li>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Settings</li>
-                                <li className="px-8 py-2 hover:bg-gray-100 rounded-md">Logout</li>
-                            </ul>
-                        </li>
+                        {menuData.map((menu) => (
+                            <li key={menu.section}>
+                                <button
+                                    className="w-full font-medium flex items-center text-left gap-2 px-4 py-2 hover:bg-gray-200 rounded-md transition duration-300"
+                                    onClick={() => toggleMenu(menu.section)}
+                                >
+                                    <div className='flex items-center gap-[0.5px]'>
+                                        <span className={`transition-transform duration-300 ${openSection === menu.section ? 'rotate-180' : 'rotate-0'}`}>
+                                            {openSection === menu.section ? <FaCaretUp className='text-gray-500' /> : <FaCaretRight className='text-gray-500' />}
+                                        </span>
+                                        {menu.icon}
+                                    </div>
+                                    <span>{menu.label}</span>
+                                </button>
+                                <ul className={`overflow-hidden transition-all duration-300 ${openSection === menu.section ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
+                                    {menu.items.map((item, index) => (
+                                        <MenuItem key={index} item={item} openSubMenu={openSubMenu} setOpenSubMenu={setOpenSubMenu} />
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>
