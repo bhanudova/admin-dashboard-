@@ -18,7 +18,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
             <body className={inter.className}>
                 <AdminHeader />
                 <div className="flex flex-col md:flex-row h-screen border pt-14">
-                    <div className="w-[18%] ">
+                    <div className="w-[18%] max-w-xs">
                        <AdminSideBar/>
                     </div>
                     <div className="w-[82%] p-2 border-[0.4px]">

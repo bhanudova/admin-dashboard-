@@ -20,7 +20,7 @@ const menuData: MenuItemData[] = [
         section: 'home',
         icon: <RiPieChartLine className='w-4 h-4 text-black/80' />,
         label: 'Home',
-        items: ['Dashboard', 'Profile', 'Settings', 'CRM', 'ProjectManagement','Chat','Email']
+        items: ['Dashboard', 'Profile', 'Settings']
     },
     {
         section: 'profile',
