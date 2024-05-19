@@ -35,7 +35,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item, openSubMenu, setOpenSubMenu }
                     <span>{item.label}</span>
                 </div>
             </button>
-            <ul className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
+            <ul className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-full opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
                 {item.items.map((subItem, index) => (
                     <MenuItem key={index} item={subItem} openSubMenu={openSubMenu} setOpenSubMenu={setOpenSubMenu} />
                 ))}

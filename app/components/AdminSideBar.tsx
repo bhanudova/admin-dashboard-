@@ -77,7 +77,7 @@ const AdminSideBar: React.FC = () => {
                                     </div>
                                     <span>{menu.label}</span>
                                 </button>
-                                <ul className={`overflow-hidden transition-all duration-300 ${openSection === menu.section ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
+                                <ul className={`overflow-hidden transition-all duration-300 ${openSection === menu.section ? 'max-h-full opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
                                     {menu.items.map((item, index) => (
                                         <MenuItem key={index} item={item} openSubMenu={openSubMenu} setOpenSubMenu={setOpenSubMenu} />
                                     ))}
