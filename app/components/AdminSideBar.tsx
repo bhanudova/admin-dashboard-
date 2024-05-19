@@ -1,5 +1,5 @@
 "use client";
-import { ShoppingCart } from 'lucide-react';
+import { ArrowRight, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 import React from 'react';
 import { FaCaretRight, FaCaretUp } from "react-icons/fa6";
@@ -30,9 +30,9 @@ const AdminSideBar: React.FC = () => {
                             >
                                 <div className='flex items-center gap-[0.5px]'>
                                     <span className={`transition-transform duration-300 ${openSection === 'home' ? 'rotate-180' : 'rotate-0'}`}>
-                                        {openSection === 'home' ? <FaCaretUp /> : <FaCaretRight />}
+                                        {openSection === 'home' ? <FaCaretUp className='text-gray-500' /> : <FaCaretRight className='text-gray-500' />}
                                     </span>
-                                    <RiPieChartLine className='w-4 h-4' />
+                                    <RiPieChartLine className='w-4 h-4 text-black/80' />
                                 </div>
                                 <span>Home</span>
                             </button>
@@ -65,8 +65,10 @@ const AdminSideBar: React.FC = () => {
                     </ul>
                 </nav>
             </div>
-            <div className='border py-4 px-2 absolute bottom-0 w-full'>
-                Collapse View
+            <div className='border py-4 px-2 absolute bottom-0 w-full text-xs font-bold text-center'>
+                <div className='flex items-center justify-center gap-2'>
+                    <h2>Collapse View</h2> <ArrowRight className='w-4'/>
+                </div>
             </div>
         </div>
     );

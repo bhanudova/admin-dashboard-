@@ -49,7 +49,7 @@ export default function AdminHeaderNavMenu() {
                                             {data.title}
                                         </div>
                                     </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
+                                    <NavigationMenuContent className='px-4 py-2 '>
                                         <NavigationMenuLink>{data.link}</NavigationMenuLink>
                                     </NavigationMenuContent>
                                 </NavigationMenuItem>
