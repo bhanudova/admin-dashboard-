@@ -1,101 +1,106 @@
-"use client";
-import { ArrowRight, ShoppingCart } from 'lucide-react';
-import { useState } from 'react';
-import React from 'react';
-import { RiPieChartLine } from "react-icons/ri";
-import MenuItem from './MenuItem';
-import { FaCaretRight, FaCaretUp } from 'react-icons/fa6';
+import React from 'react'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, } from "@/components/ui/accordion"
+import { LuPieChart } from "react-icons/lu";
+import { IoCartOutline } from "react-icons/io5";
+import { FiPhone } from "react-icons/fi";
+import { LuArrowLeftToLine } from "react-icons/lu";
+export default function AdminSideBar() {
 
-type Section = 'home' | 'profile' | 'ecommerce' | null;
+    return (<>
+        <div className='relative h-full'>
+            <div className='w-full py-6 mt-1 px-2 h-[92%] overflow-y-auto'>
+                <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                        <AccordionTrigger>
+                            <div className='flex items-center gap-2'>
+                                <LuPieChart />
+                                <h2 className='text-sm'>Home</h2>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul className='w-[75%] mx-auto'>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>E commerce</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Project management</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>CRM</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Social feed</li>
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
 
-interface MenuItemData {
-    section: Section;
-    icon: React.JSX.Element;
-    label: string;
-    items: (string | MenuItemData)[];
-}
+                    <h2 className='mt-3 mb-2 font-medium text-sm px-4'>Apps</h2>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger>
+                            <div className='flex items-center gap-2'>
+                                <IoCartOutline />
+                                <h2 className='text-sm'>E Commerce</h2>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul className='w-[90%] mx-auto'>
+                                <li>
+                                    <Accordion type="single" collapsible>
+                                        <AccordionItem value="item-1">
+                                            <AccordionTrigger>Admin</AccordionTrigger>
+                                            <AccordionContent>
+                                                <ul className='w-[80%] mx-auto'>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Add product</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Products</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Customers</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Customer details</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Orders</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Order details</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Refund</li>
+                                                </ul>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                        <AccordionItem value="item-2">
+                                            <AccordionTrigger>Customer</AccordionTrigger>
+                                            <AccordionContent>
+                                                <ul className='w-[80%] mx-auto'>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Homepage</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Product details</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Products filter</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>cart</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Checkout</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Shipping info</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Profile</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Favorite stores</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Wishlist</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Order tracking</li>
+                                                    <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Invoice</li>
+                                                </ul>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    </Accordion>
+                                </li>
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
 
-const menuData: MenuItemData[] = [
-    {
-        section: 'home',
-        icon: <RiPieChartLine className='w-4 h-4 text-black/80' />,
-        label: 'Home',
-        items: ['Dashboard', 'Profile', 'Settings']
-    },
-    {
-        section: 'profile',
-        icon: <ShoppingCart className='w-4 h-4' />,
-        label: 'E Commerce',
-        items: [
-            {
-                section: 'ecommerce',
-                icon: <FaCaretRight className='w-4 h-4' />,
-                label: 'Overview',
-                items: ['Subitem 1', 'Subitem 2']
-            },
-            {
-                section: 'ecommerce',
-                icon: <FaCaretRight className='w-4 h-4' />,
-                label: 'Settings',
-                items: ['Setting 1', 'Setting 2']
-            },
-            {
-                section: 'ecommerce',
-                icon: <FaCaretRight className='w-4 h-4' />,
-                label: 'Logout',
-                items: ['Logout 1', 'Logout 2']
-            }
-        ]
-    }
-];
+                    <AccordionItem value="item-3">
+                        <AccordionTrigger>
+                            <div className='flex items-center gap-2'>
+                                <FiPhone />
+                                <h2 className='text-sm'>CRM</h2>
+                            </div>
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <ul className='w-[75%] mx-auto'>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>E commerce</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Project management</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>CRM</li>
+                                <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>Social feed</li>
+                            </ul>
+                        </AccordionContent>
+                    </AccordionItem>
 
-const AdminSideBar: React.FC = () => {
-    const [openSection, setOpenSection] = useState<Section>(null);
-    const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
 
-    const toggleMenu = (section: Section) => {
-        setOpenSection(openSection === section ? null : section);
-        setOpenSubMenu(null);  // Close any open sub-sections when toggling a main section
-    };
+                </Accordion>
 
-    return (
-        <div className='h-full relative'>
-            <div className='px-4 py-4'>
-                <nav className='text-[13px]'>
-                    <ul>
-                        {menuData.map((menu) => (
-                            <li key={menu.section}>
-                                <button
-                                    className="w-full font-medium flex items-center text-left gap-2 px-4 py-2 hover:bg-gray-200 rounded-md transition duration-300"
-                                    onClick={() => toggleMenu(menu.section)}
-                                >
-                                    <div className='flex items-center gap-[0.5px]'>
-                                        <span className={`transition-transform duration-300 ${openSection === menu.section ? 'rotate-180' : 'rotate-0'}`}>
-                                            {openSection === menu.section ? <FaCaretUp className='text-gray-500' /> : <FaCaretRight className='text-gray-500' />}
-                                        </span>
-                                        {menu.icon}
-                                    </div>
-                                    <span>{menu.label}</span>
-                                </button>
-
-                                <ul className={`overflow-hidden transition-all duration-300 ${openSection === menu.section ? 'max-h-full opacity-100' : 'max-h-0 opacity-0'} pl-4 text-[12px]`}>
-                                    {menu.items.map((item, index) => (
-                                        <MenuItem key={index} item={item} openSubMenu={openSubMenu} setOpenSubMenu={setOpenSubMenu} />
-                                    ))}
-                                </ul>
-                            </li>
-                            
-                        ))}
-                    </ul>
-                </nav>
             </div>
-            <div className='border py-4 px-2 absolute bottom-0 w-full text-xs font-bold text-center'>
-                <div className='flex items-center justify-center gap-2'>
-                    <h2>Collapse View</h2> <ArrowRight className='w-4'/>
-                </div>
+            <div className='flex items-center h-[8%] justify-center border-t border-b w-full p-2 absolute bottom-0'>
+            <LuArrowLeftToLine/><h2 className='text-sm font-bold'>Collapsed View</h2>
             </div>
         </div>
-    );
+    </>)
 }
-
-export default AdminSideBar;

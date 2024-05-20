@@ -11,17 +11,16 @@ export const metadata: Metadata = {
     description: "Admin Page",
 };
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
             <body className={inter.className}>
                 <AdminHeader />
-                <div className="flex flex-col md:flex-row h-screen border pt-14">
-                    <div className="w-[18%] max-w-xs">
-                       <AdminSideBar/>
+                <div className="flex flex-col md:flex-row h-screen pt-14">
+                    <div className="w-[15rem]">
+                        <AdminSideBar />
                     </div>
-                    <div className="w-[82%] p-2 border-[0.4px]">
+                    <div className="flex-1  border-l-[0.4px]">
                         {children}
                     </div>
                 </div>
