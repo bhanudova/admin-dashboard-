@@ -25,7 +25,7 @@ const AdminSideNav = ({ toggleSidebar }: any) => (
                             <AccordionContent>
                                 {
                                     adminSideBarHomeList.map((data: any, i: number) => (
-                                        <ul className='w-[75%] mx-auto'>
+                                        <ul key={i} className='w-[75%] mx-auto'>
                                             <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'><Link href={data.link}>{data.title}</Link></li>
                                         </ul>
                                     ))

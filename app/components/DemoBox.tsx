@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { AgChartsReact } from 'ag-charts-react';
 
 const DemoBox = () => {
-    const chartOptions:any= ({
+    const chartOptions: any = ({
         // Data: Data to be displayed in the chart
         data: [
             { month: 'Jan', avgTemp: 2.3, iceCreamSales: 162000 },
@@ -16,10 +16,12 @@ const DemoBox = () => {
         ],
         // Series: Defines which chart type and data to use
         series: [{ type: 'bar', xKey: 'month', yKey: 'iceCreamSales' }],
-      });
+    });
     return (
-        <div className='w-full h-[40rem] p-10'>
-            <AgChartsReact options={chartOptions} />
+        <div>
+            <div className='w-full h-[40rem] p-10'>
+                <AgChartsReact options={chartOptions} />
+            </div>
         </div>
     )
 }
