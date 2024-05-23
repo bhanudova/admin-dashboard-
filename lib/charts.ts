@@ -14,3 +14,71 @@ export const chartOptions: any = ({
 
 
 
+function getPieData() {
+    return [
+        { asset: "Stocks", amount: 60000 },
+        { asset: "Bonds", amount: 40000 },
+        { asset: "Cash", amount: 7000 },
+        { asset: "Real Estate", amount: 5000 },
+        { asset: "Commodities", amount: 3000 },
+    ];
+}
+export const pieCharts: any = ({
+    data: getPieData(),
+    title: {
+        text: "Portfolio Composition",
+    },
+    series: [
+        {
+            type: "pie",
+            angleKey: "amount",
+            legendItemKey: "asset",
+        },
+    ],
+});
+
+function getLineData() {
+    return [
+      {
+        quarter: "Q1",
+        petrol: 200,
+        diesel: 100,
+      },
+      {
+        quarter: "Q2",
+        petrol: 300,
+        diesel: 130,
+      },
+      {
+        quarter: "Q3",
+        petrol: 350,
+        diesel: 160,
+      },
+      {
+        quarter: "Q4",
+        petrol: 400,
+        diesel: 200,
+      },
+    ];
+  }
+
+export const lineCharts: any = ({
+    title: {
+        text: "Annual Fuel Expenditure",
+    },
+    data: getLineData(),
+    series: [
+        {
+            type: "line",
+            xKey: "quarter",
+            yKey: "petrol",
+            yName: "Petrol",
+        },
+        {
+            type: "line",
+            xKey: "quarter",
+            yKey: "diesel",
+            yName: "Diesel",
+        },
+    ],
+});
