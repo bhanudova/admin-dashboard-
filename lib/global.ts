@@ -12,3 +12,29 @@ export const adminHeaderNavMenu = [
         link: 'Projects Menu Link'
     }
 ]
+
+export const adminSideBarHomeList = [
+    {
+        title:'E commerce',
+        link:'/admin/ecommerce'
+    },
+    {
+        title:'Project management',
+        link:'/admin/projmgmt'
+    },
+    {
+        title:'CRM',
+        link:'/admin/crm'
+    },
+    {
+        title:'Social feed',
+        link:'/admin/socialfeed'
+    }
+]
+
+export const adminSideBarAppsList = [
+    {
+        title:'',
+        link:''
+    }
+]
