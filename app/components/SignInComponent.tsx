@@ -8,7 +8,7 @@ const SignInComponent = () => {
     return (
         <div className='flex justify-center relative items-center h-screen'>
             <Image src={'/signin_bg.jpg'} width={1000} height={1000} alt='' className='w-full h-full '/>
-            <form className=' bg-white  absolute p-10 rounded-lg w-[30%] mx-auto'>
+            <form className=' bg-white  absolute p-10 rounded-lg w-[90%] md:w-[60%] lg:w-[30%] mx-auto'>
                 <h2 className='text-center font-semibold text-2xl mb-4'>Sign In</h2>
                 <dl>
                     <dt className='font-semibold'>User Name</dt>
