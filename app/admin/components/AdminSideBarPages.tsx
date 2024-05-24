@@ -1,7 +1,11 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { IoCartOutline } from "react-icons/io5";
-import { FiPhone } from "react-icons/fi";
+import { FiLayout, FiPhone } from "react-icons/fi";
+import { FaQuestionCircle } from 'react-icons/fa';
+import { FaGlobe, FaLock } from 'react-icons/fa6';
+import { IoMdPricetags } from 'react-icons/io';
+import { MdErrorOutline, MdEventAvailable } from 'react-icons/md';
 const AdminSideBarPages = () => {
     return (
         <div>
@@ -9,7 +13,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-9">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <FaQuestionCircle />
                         <h2 className='text-sm'>FAQ</h2>
                     </div>
                 </AccordionTrigger>
@@ -23,7 +27,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-10">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <FaGlobe />
                         <h2 className='text-sm'>Landing</h2>
                     </div>
                 </AccordionTrigger>
@@ -37,7 +41,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-11">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <IoMdPricetags />
                         <h2 className='text-sm'>Pricing</h2>
                     </div>
                 </AccordionTrigger>
@@ -51,7 +55,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-12">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <MdErrorOutline />
                         <h2 className='text-sm'>Error</h2>
                     </div>
                 </AccordionTrigger>
@@ -66,7 +70,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-13">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <MdEventAvailable />
                         <h2 className='text-sm'>Events</h2>
                     </div>
                 </AccordionTrigger>
@@ -80,7 +84,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-14">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <FaLock />
                         <h2 className='text-sm'>Authentication</h2>
                     </div>
                 </AccordionTrigger>
@@ -95,7 +99,7 @@ const AdminSideBarPages = () => {
             <AccordionItem value="item-15">
                 <AccordionTrigger>
                     <div className='flex items-center gap-2'>
-                        <FiPhone />
+                        <FiLayout />
                         <h2 className='text-sm'>Layout</h2>
                     </div>
                 </AccordionTrigger>

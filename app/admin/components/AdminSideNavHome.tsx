@@ -3,7 +3,9 @@ import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/
 import { adminSideBarHomeList } from '@/lib/global';
 import { LuPieChart } from 'react-icons/lu';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const AdminSideNavHome = () => {
+    const router = useRouter();
     return (
         <AccordionItem value="item-1">
             <AccordionTrigger>
@@ -16,7 +18,7 @@ const AdminSideNavHome = () => {
                 {
                     adminSideBarHomeList.map((data: any, i: number) => (
                         <ul key={i} className='w-[75%] mx-auto'>
-                            <li className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'><Link href={data.link}>{data.title}</Link></li>
+                            <li onClick={()=>router.push(`${data.link}`)} className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>{data.title}</li>
                         </ul>
                     ))
                 }
