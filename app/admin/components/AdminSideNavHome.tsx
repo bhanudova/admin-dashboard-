@@ -18,7 +18,7 @@ const AdminSideNavHome = () => {
                 {
                     adminSideBarHomeList.map((data: any, i: number) => (
                         <ul key={i} className='w-[75%] mx-auto'>
-                            <li onClick={()=>router.push(`${data.link}`)} className='hover:bg-gray-100 rounded-md hover:cursor-pointer p-1.5 px-3'>{data.title}</li>
+                            <li onClick={()=>router.push(`${data.link}`)} className='hover:bg-gray-100 rounded-md hover:cursor-pointer font-medium p-1.5 px-3'>{data.title}</li>
                         </ul>
                     ))
                 }

@@ -6,10 +6,10 @@ export default function Page() {
   return (
     <div className="p-4">
       <div className="grid grid-cols-2 gap-4 mb-10">
-        <div className="border p-20 rounded-md bg-green-300">
+        <div className="border p-20 rounded-md bg-violet-500">
 
         </div>
-        <div className="border p-20 rounded-md bg-orange-300">
+        <div className="border p-20 rounded-md bg-fuchsia-300">
 
         </div>
       </div>
